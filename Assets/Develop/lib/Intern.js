@@ -6,3 +6,5 @@ class Intern{
    
    
     }}
+
+      console.log('Hello INT')

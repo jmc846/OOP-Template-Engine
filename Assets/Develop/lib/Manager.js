@@ -6,3 +6,5 @@ class Manager{
    
    
     }}
+
+      console.log('Hello MNG')
