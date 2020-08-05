@@ -4,16 +4,71 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const makeMarkDown = require('./lib/Employee');
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const createEmployee = [
+    {   type: 'checkbox',
+        message: "Want to create an employee?",
+        choices: ['Yes','No']
+    },
+    {   type: 'input',
+        message: "Please provide an Employee name",
+        name: "contents",
+        
+    },
+    {   type: 'input',
+        message: "Please provide an Employee ID",
+        name: "id"
+    },
+    {  
+      type: 'input',  
+      message: "Please provide an Employee email",
+        name: "email"
+    },
+    {   
+      type: 'checkbox',  
+      message: "What is the employee's role",
+      choices: ["Manager","Engineer","Intern"]
+    },
+   
+  ]
 
 const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
+const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
+const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
 console.log(jacob);
+console.log(kim);
+console.log(randy);
 
 // Write code to use inquirer to gather information about the development team members,
+
+function init () {
+    inquirer.prompt(createEmployee)
+    .then((response) => {   
+        console.log("html generation has begun, wait one moment");
+        const finishedMarkdown = createEmployee.Employee();
+        fs.writeFile("team.html",finishedMarkdown, err =>{
+          if(err){
+            console.log(err);
+          } else{
+            console.log("YAY!!!")
+          }
+        });
+    })
+    .catch((err) => {
+        console.log(err);
+    }
+    )
+    ;
+}
+ 
+init();
+
+
 
 
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -37,3 +92,4 @@ console.log(jacob);
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+render();
