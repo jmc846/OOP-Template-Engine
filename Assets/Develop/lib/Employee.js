@@ -1,10 +1,12 @@
 // TODO: Write code to define and export the Employee class
 class Employee{
-    constructor(name, question,){
+    constructor(name, id, email){
     this.name=name;
-    question.prompt = hello;
-    // console.log('Hello')
+    this.id=id;
+    this.email=email;
+    
    
-    }}
+    }
+}
 
-     console.log('Hello EMP')
+  module.exports = Employee
