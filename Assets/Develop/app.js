@@ -6,16 +6,14 @@ const path = require("path");
 const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
+var employees = [];
 const htmlRender = require("./lib/htmlRenderer");
 const createEmployeeArr = require("./lib/createEmployeeArr");
 
-  
-
-const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
-const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
-const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
-const employeeArr = [jacob, kim, randy];
+ const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
+ const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
+ const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
+ const employeeArr = [jacob, kim, randy];
 htmlRender(employeeArr);
 console.log(htmlRender(employeeArr))
 console.log(jacob);
@@ -24,29 +22,41 @@ console.log(randy);
 
 // Write code to use inquirer to gather information about the development team members,
 
-function init () {
-  // let employeeData = ();
-    inquirer.prompt(createEmployeeArr)
-    .then((response) => {   
-      
+function createEmployee() {
+   let employeeData = {};
+    inquirer.prompt(createEmployeeArr).then((response) => {   
+      if(response.employeeRole === 'Manager'){
+        employeeData = new Manager(response.employeeName, employees.length +1,)
+      }else if (response.employeeRole === 'Engineer'){
+        employeeData = new Engineer(response.employeeName, employees.length +1,)
+      }else{
+        employeeData = new Intern(response.employeeName, employees.length +1,)
+      }
         console.log("html generation has begun, wait one moment");
-        const finishedMarkdown = createEmployeeArr.Employee();
-        fs.writeFile("team.html",finishedMarkdown, err =>{
+        employees.push(employeeData);
+        console.log(employees)
+        if(response.nextE){
+          inputEmployeeInfo();
+        }else{
+          employees.forEach(employee =>{
+            const role = employee.getRole();
+          })
+        }
+        })
+        const employeeCreated = createEmployeeArr.createEmployee();
+        fs.appendFile("team.html",finishedMarkdown, err =>{
           if(err){
             console.log(err);
           } else{
-            console.log("YAY!!!")
-          }
-        });
-    })
-    .catch((err) => {
-        console.log(err);
+            console.log("YAY!!!");
+
+                }
+        })
+    // }    .catch((err) => {
+    //     console.log(err);
     }
-    )
     ;
-}
- 
-init();
+createEmployee();
 
 
 
@@ -72,4 +82,4 @@ init();
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
-render();
+// render();
