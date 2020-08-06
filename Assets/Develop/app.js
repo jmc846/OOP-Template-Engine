@@ -4,38 +4,11 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const makeMarkDown = require('./lib/Employee');
-
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const htmlRender = require("./lib/htmlRenderer");
-const createEmployee = [
-    {   type: 'checkbox',
-        message: "Want to create an employee?",
-        choices: ['Yes','No']
-    },
-    {   type: 'input',
-        message: "Please provide an Employee name",
-        name: "contents",
-        
-    },
-    {   type: 'input',
-        message: "Please provide an Employee ID",
-        name: "id"
-    },
-    {  
-      type: 'input',  
-      message: "Please provide an Employee email",
-        name: "email"
-    },
-    {   
-      type: 'checkbox',  
-      message: "What is the employee's role",
-      choices: ["Manager","Engineer","Intern"]
-    },
-   
-  ]
+const createEmployeeArr = require("./lib/createEmployeeArr");
 
   
 
@@ -52,10 +25,12 @@ console.log(randy);
 // Write code to use inquirer to gather information about the development team members,
 
 function init () {
-    inquirer.prompt(createEmployee)
+  // let employeeData = ();
+    inquirer.prompt(createEmployeeArr)
     .then((response) => {   
+      
         console.log("html generation has begun, wait one moment");
-        const finishedMarkdown = createEmployee.Employee();
+        const finishedMarkdown = createEmployeeArr.Employee();
         fs.writeFile("team.html",finishedMarkdown, err =>{
           if(err){
             console.log(err);
