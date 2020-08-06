@@ -9,7 +9,7 @@ const makeMarkDown = require('./lib/Employee');
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
+const htmlRender = require("./lib/htmlRenderer");
 const createEmployee = [
     {   type: 'checkbox',
         message: "Want to create an employee?",
@@ -37,9 +37,14 @@ const createEmployee = [
    
   ]
 
+  
+
 const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
 const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
 const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
+const employeeArr = [jacob, kim, randy];
+htmlRender(employeeArr);
+console.log(htmlRender(employeeArr))
 console.log(jacob);
 console.log(kim);
 console.log(randy);
