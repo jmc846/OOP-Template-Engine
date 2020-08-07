@@ -24,7 +24,7 @@ console.log(randy);
 
 function createEmployee() {
    let employeeData = {};
-    inquirer.prompt(createEmployeeArr).then((response) => {   
+    inquirer.prompt(employeeInfoArr).then((response) => {   
       if(this.employeeRole === 'Manager'){
         employeeData = new Manager(response.employeeName, employees.length +1,)
 
