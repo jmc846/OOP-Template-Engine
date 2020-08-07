@@ -14,4 +14,9 @@ I want to generate a webpage that displays my team's basic info
 so that I have access to emails and GitHub profiles
 
 
+<<<<<<< HEAD
   ![Command line view of Template Generator, ](./assests.images.Template-Generator-Demo)
+=======
+
+[![Command line view of Template Generator](/assests.images.Template-Generator-Demo "video of template generator at work")](https://drive.google.com/file/d/1rl1sI_HRvn5ye0_N7nNH7umQMCpRvJ55/preview)
+>>>>>>> d24a144667c4ff8d12d15a889729091fdd15164d
