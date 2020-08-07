@@ -14,8 +14,8 @@ const employeeInfoArr = require("./lib/employeeInfoArr");
  const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
  const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
  const employeeArr = [jacob, kim, randy];
-htmlRender(employeeArr);
-console.log(htmlRender(employeeArr))
+// htmlRender(employeeArr);
+// console.log(htmlRender(employeeArr))
 console.log(jacob);
 console.log(kim);
 console.log(randy);
@@ -23,7 +23,7 @@ console.log(randy);
 // Write code to use inquirer to gather information about the development team members,
 
 function createEmployee() {
-   let employeeData = {};
+   let employeeData = employeeInfoArr.createEmployee;
     inquirer.prompt(employeeInfoArr).then((response) => {   
       if(this.employeeRole === 'Manager'){
         employeeData = new Manager(response.employeeName, employees.length +1,)
