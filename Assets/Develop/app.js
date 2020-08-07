@@ -8,7 +8,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 var employees = [];
 const htmlRender = require("./lib/htmlRenderer");
-const createEmployeeArr = require("./lib/createEmployeeArr");
+const employeeInfoArr = require("./lib/employeeInfoArr");
 
  const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
  const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
@@ -25,9 +25,10 @@ console.log(randy);
 function createEmployee() {
    let employeeData = {};
     inquirer.prompt(createEmployeeArr).then((response) => {   
-      if(response.employeeRole === 'Manager'){
+      if(this.employeeRole === 'Manager'){
         employeeData = new Manager(response.employeeName, employees.length +1,)
-      }else if (response.employeeRole === 'Engineer'){
+
+      }else if (this.employeeRole === 'Engineer'){
         employeeData = new Engineer(response.employeeName, employees.length +1,)
       }else{
         employeeData = new Intern(response.employeeName, employees.length +1,)
@@ -43,8 +44,9 @@ function createEmployee() {
           })
         }
         })
-        const employeeCreated = createEmployeeArr.createEmployee();
-        fs.appendFile("team.html",finishedMarkdown, err =>{
+        const employeeCreated = employeeInfoArr.createEmployee(role);
+ 
+        fs.appendFile("team.html",employeeCreated, err =>{
           if(err){
             console.log(err);
           } else{
@@ -56,7 +58,7 @@ function createEmployee() {
     //     console.log(err);
     }
     ;
-createEmployee();
+ createEmployee();
 
 
 

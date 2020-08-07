@@ -1,14 +1,14 @@
-const createEmployeeArr = [
+const employeeInfoArr = [
     {
         type: 'checkbox',
         message: "Want to create an employee?",
         name: "new employee",
-        choices: ['Yes', 'No']
+        choices: ['Yes', 'No'],
     },
     {
         type: 'checkbox',
         message: "What is the employee's role",
-        name: 'employeeRole',
+        name: 'employee role',
         choices: ["Manager", "Engineer", "Intern"],
         
 
@@ -16,12 +16,12 @@ const createEmployeeArr = [
     {
         type: 'input',
         message: "Please provide an Employee ID",
-        name: "id"
+        name: " employee id"
     },
     {
         type: 'input',
         message: "Please provide an Employee email",
-        name: "email"
+        name: "employee mail"
     },
     {
         type: 'input',
@@ -32,4 +32,4 @@ const createEmployeeArr = [
 
 ]
 
-module.exports = createEmployeeArr;
+module.exports = employeeInfoArr;
