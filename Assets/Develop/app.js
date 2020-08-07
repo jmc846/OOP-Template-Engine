@@ -22,9 +22,8 @@ console.log(randy);
 
 // Write code to use inquirer to gather information about the development team members,
 
-function createEmployee() {
-   let employeeData = employeeInfoArr.createEmployee;
-    inquirer.prompt(employeeInfoArr).then((response) => {   
+function init() {
+   let employeeData =  inquirer.prompt(employeeInfoArr).then((response) => {   
       if(this.employeeRole === 'Manager'){
         employeeData = new Manager(response.employeeName, employees.length +1,)
 
@@ -58,7 +57,7 @@ function createEmployee() {
     //     console.log(err);
     }
     ;
- createEmployee();
+ init();
 
 
 

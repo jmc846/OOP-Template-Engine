@@ -1,22 +1,25 @@
 const employeeInfoArr = [
-    {
-        type: 'checkbox',
-        message:"Want to create an employee?",
-        name: "new employee",
-        choices: ['Yes', 'No'],
-    },
-    {
-        type: 'checkbox',
-        message: "What is the employee's role",
-        name: 'employee role',
-        choices: ["Manager", "Engineer", "Intern"],
-        
-
-    },
+     {
+         type: 'list',
+         name: "new employee",
+         message:"Want to create an employee?",      
+         choices: ['Yes', 'No'],
+     },
+     {
+         type: 'checkbox',
+         name: 'employee role',
+         message: "What is the employee's role",        
+         choices: [                  
+                 'Manager',          
+                 'Engineer',
+                 'Intern'             
+         ],      
+     },
     {
         type: 'input',
         message: "Please provide an Employee ID",
-        name: " employee id"
+        name: " employee id",
+        default: '00000'
     },
     {
         type: 'input',
