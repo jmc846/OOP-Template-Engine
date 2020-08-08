@@ -14,50 +14,51 @@ const employeeInfoArr = require("./lib/employeeInfoArr");
  const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
  const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
  const employeeArr = [jacob, kim, randy];
-// htmlRender(employeeArr);
+// // htmlRender(employeeArr);
 // console.log(htmlRender(employeeArr))
-console.log(jacob);
-console.log(kim);
-console.log(randy);
+//  console.log(jacob);
+//  console.log(kim);
+//  console.log(randy);
 
 // Write code to use inquirer to gather information about the development team members,
 
-function init() {
-   let employeeData =  inquirer.prompt(employeeInfoArr).then((response) => {   
-      if(this.employeeRole === 'Manager'){
-        employeeData = new Manager(response.employeeName, employees.length +1,)
-
-      }else if (this.employeeRole === 'Engineer'){
-        employeeData = new Engineer(response.employeeName, employees.length +1,)
-      }else{
-        employeeData = new Intern(response.employeeName, employees.length +1,)
-      }
-        console.log("html generation has begun, wait one moment");
-        employees.push(employeeData);
-        console.log(employees)
-        if(response.nextE){
-          inputEmployeeInfo();
-        }else{
-          employees.forEach(employee =>{
-            const role = employee.getRole();
-          })
-        }
-        })
-        const employeeCreated = employeeInfoArr.createEmployee(role);
+function onboard() {
+   inquirer.prompt(employeeInfoArr).then((employeeDataResponse) => {   
+     console.log(employeeDataResponse);
+      // if(this.employeeRole === 'Manager'){
+         employeeData = new Manager(response.employeeName, employees.length +1,)
+       inquirer.prompt(managerinfoArr)
+      // }else if (this.employeeRole === 'Engineer'){
+      //   employeeData = new Engineer(response.employeeName, employees.length +1,)
+      // }else{
+      //   employeeData = new Intern(response.employeeName, employees.length +1,)
+      // }no 
+      //   console.log("html generation has begun, wait one moment");
+      //   employees.push(employeeD);
+      //   console.log(employees)
+      //   if(response.nextE){
+      //     inputEmployeeInfo();
+      //   }else{
+      //     employees.forEach(employee =>{
+      //       const role = employee.getRole();
+      //     })
+      //   }
+      //   })
+      //   const employeeCreated = employeeInfoArr.createEmployee(role);
  
-        fs.appendFile("team.html",employeeCreated, err =>{
-          if(err){
-            console.log(err);
-          } else{
-            console.log("YAY!!!");
+      //   fs.appendFile("team.html",employeeCreated, err =>{
+      //     if(err){
+      //       console.log(err);
+      //     } else{
+      //       console.log("YAY!!!");
 
-                }
-        })
+      //           }
+        // })
     // }    .catch((err) => {
     //     console.log(err);
-    }
+    })
     ;
- init();
+
 
 
 
@@ -84,3 +85,5 @@ function init() {
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 // render();
+  }
+  onboard();
