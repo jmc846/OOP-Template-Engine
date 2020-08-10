@@ -1,13 +1,13 @@
 const employeeInfoArr = [
      {
          type: 'list',
-         name: "new employee",
+         name: "new",
          message:"Want to create an employee?",      
          choices: ['Yes', 'No'],
      },
      {
          type: 'checkbox',
-         name: 'employee role',
+         name: 'role',
          message: "What is the employee's role",        
          choices: [                  
                  'Manager',          
@@ -17,19 +17,21 @@ const employeeInfoArr = [
      },
     {
         type: 'input',
-        message: "Please provide an Employee ID",
-        name: " employee id",
+        name: "id",
+        message: "Please provide an Employee ID",    
         default: '00000'
     },
     {
         type: 'input',
+        name: "email",
         message: "Please provide an Employee email",
-        name: "employee mail"
+        
     },
     {
         type: 'input',
+        name: "name",
         message: "Please provide an Employee name",
-        name: "employeeName",
+  
 
     },
 

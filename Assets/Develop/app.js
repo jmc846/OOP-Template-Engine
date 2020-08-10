@@ -7,6 +7,7 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 var employees = [];
+var managers = [];
 const htmlRender = require("./lib/htmlRenderer");
 const employeeInfoArr = require("./lib/employeeInfoArr");
 const managerInfoArr = require("./lib/managerInfoArr");
@@ -25,12 +26,25 @@ const managerInfoArr = require("./lib/managerInfoArr");
 
 function onboard() {
    inquirer.prompt(employeeInfoArr).then((employeeDataResponse) => {   
-     console.log(employeeDataResponse);
-       if(this.employeeRole === 'Manager'){
-         employeeData = new Manager(employeeDataResponse.employeeName, employees.length +1,
-         function createManager(){
-       inquirer.prompt(managerinfoArr);
-         })
+     console.log(employeeDataResponse.role);
+      let managerDataResponse = []
+        if(this.employeeDataResponse !== 'Manager'){
+          inquirer.prompt(managerInfoArr)
+       .then(managerDataResponse.officeNumber)
+         managerData = new Manager(managerDataResponse.managerName, managers.length +1,
+         managerDataResponse.officeNumber)
+        console.log(managerDataResponse.officeNumber);
+
+         
+         }
+             },
+ 
+   );
+   
+          
+   
+
+
       
 //        }else if (this.employeeRole === 'Engineer'){
 //          employeeData = new Engineer(response.employeeName, employees.length +1,
@@ -96,6 +110,13 @@ function onboard() {
 // // object with the correct structure and methods. This structure will be crucial in order
 // // for the provided `render` function to work! ```
 // // render();
-//   })
-// }
-  onboard();
+   ;  
+  
+
+            }
+
+  
+   onboard();
+  //  getOfficeNumber();
+//  
+            
