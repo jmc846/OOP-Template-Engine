@@ -5,16 +5,18 @@ const employeeInfoArr = [
          message:"Want to create an employee?",      
          choices: ['Yes', 'No'],
      },
+
      {
-         type: 'checkbox',
-         name: 'role',
-         message: "What is the employee's role",        
-         choices: [                  
-                 'Manager',          
-                 'Engineer',
-                 'Intern'             
-         ],      
-     },
+        type: 'checkbox',
+        name: 'role',
+        message: "What is the employee's role",        
+        choices: [                  
+                'Manager',          
+                'Engineer',
+                'Intern'             
+        ],      
+    },
+    
     {
         type: 'input',
         name: "id",
@@ -34,6 +36,7 @@ const employeeInfoArr = [
   
 
     },
+    
 
 ]
 

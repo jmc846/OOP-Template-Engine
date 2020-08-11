@@ -4,7 +4,7 @@ const managerInfoArr = [
        type: 'input',
        name: 'officenumber',
        message: "Please provide the Manager Office Number",
-    //    officeNumber: 'officeNumber',
+       officeNumber: 'officeNumber',
 
    },
 

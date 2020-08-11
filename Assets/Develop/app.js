@@ -8,6 +8,8 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 var employees = [];
 var managers = [];
+var engineers =[];
+var interns = [];
 const htmlRender = require("./lib/htmlRenderer");
 const employeeInfoArr = require("./lib/employeeInfoArr");
 const managerInfoArr = require("./lib/managerInfoArr");
@@ -23,37 +25,57 @@ const managerInfoArr = require("./lib/managerInfoArr");
 //  console.log(randy);
 
 // Write code to use inquirer to gather information about the development team members,
+function createManager (){
+inquirer.prompt(managerInfoArr).then((managerDataResponse));
+console.log(managerDataResponse);
+let newManager= new Manager(managerInfoArr)
+let officeNumber = managerDataResponse.officeNumber
+}
+function createEngineer (){
+  inquirer.prompt(engineerInfoArr).then((engineerDataResponse));
+  console.log(engineerDataResponse.github);
+  let newEngineer= new Engineer(engineerInfoArr)
+  let github = engineerDataResponse.github
+  }
+  function createIntern (){
+    inquirer.prompt(internInfoArr).then((internDataResponse));
+    console.log(internDataResponse.university);
+    let newintern= new Intern(internInfoArr)
+    let university = internDataResponse.university
+    }
 
 function onboard() {
    inquirer.prompt(employeeInfoArr).then((employeeDataResponse) => {   
-     console.log(employeeDataResponse.role);
-      let managerDataResponse = []
-        if(this.employeeDataResponse !== 'Manager'){
-          inquirer.prompt(managerInfoArr)
-       .then(managerDataResponse.officeNumber)
-         managerData = new Manager(managerDataResponse.managerName, managers.length +1,
-         managerDataResponse.officeNumber)
-        console.log(managerDataResponse.officeNumber);
+     console.log(employeeDataResponse.role);   
+       let newEmployeeRole = employeeDataResponse.role;
 
-         
-         }
-             },
+   switch (employee){
+     case 'Manager':
+    if (employeeDataResponse.role === 'Manager')
+    createManager();
+   
+   break;
+    
+    case 'Engineer':
+      if(employeeDataResponse.role === 'Engineer')
+      createEngineer();  
+  
+  break;
+  
+    case 'Intern':
+      if(employeeDataResponse.role === 'Intern')
+      createIntern();
+   }
+
+}
+
+
+             
+  
+   );            
  
-   );
-   
-          
-   
+   ;     
 
-
-      
-//        }else if (this.employeeRole === 'Engineer'){
-//          employeeData = new Engineer(response.employeeName, employees.length +1,
-//           function createEngineer(){
-//             inquirer.prompt(engineerInfoArr)
-//        }else{
-//         employeeData = new Intern(response.employeeName, employees.length +1,)
-//          function createInter(){
-//        }
 //          console.log("html generation has begun, wait one moment");
 //          employees.push(employeeD);
 //          console.log(employees)
@@ -83,11 +105,6 @@ function onboard() {
 //     };
 //  ;
 //     ;
-
-
-
-
-
 // // and to create objects for each team member (using the correct classes as blueprints!)
 
 // // After the user has input all employees desired, call the `render` function (required
@@ -112,11 +129,16 @@ function onboard() {
 // // render();
    ;  
   
-
-            }
-
+;
+            ;
+            // }
   
-   onboard();
+
+   ;
+   
   //  getOfficeNumber();
 //  
+            // } 
             
+}
+onboard();       
