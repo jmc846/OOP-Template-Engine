@@ -31,9 +31,9 @@ const internInfoArr= require("./lib/internInfoArr");
 // Write code to use inquirer to gather information about the development team members,
 function createManager (){
 inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
-  console.log(managerDataResponse, managers ++);
-  let newManager= new Manager(managerInfoArr.name, managerInfoArr.id,
-     managerInfoArr.email, managerInfoArr.officeNumber)
+  console.log(employees,managerDataResponse, managers ++);
+  let newManager= new Manager(managerDataResponse.name, managerDataResponse.id,
+     managerDataResponse.email, managerDataResponse.officeNumber)
   let officeNumber = managerDataResponse.officeNumber
   let addTeamMember = managerDataResponse.teamMembers.join('')
       switch (addTeamMember){
@@ -48,14 +48,16 @@ inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
         case 'Intern':     
         createIntern();
       break;
+      case 'Finish Team':
+        htmlRender();
       }
 });
 
 }
 function createEngineer (){
   inquirer.prompt(engineerInfoArr).then(function(engineerDataResponse){
-    console.log(engineerDataResponse.github, engineers ++);
-    let newEngineer= new Engineer(engineerInfoArr.name, engineerDataResponse.id,
+    console.log(employees,engineerDataResponse.github, engineers ++);
+    let newEngineer= new Engineer(engineerDataResponse.name, engineerDataResponse.id,
        engineerDataResponse.email, engineerDataResponse.github)
     let github = engineerDataResponse.github
     let addTeamMember = engineerDataResponse.teamMembers.join('')
@@ -71,6 +73,9 @@ function createEngineer (){
         case 'Intern':     
         createIntern();
       break;
+       
+      case 'Finish Team':
+        // htmlRender();
       }
 
   });
@@ -78,8 +83,8 @@ function createEngineer (){
 
   function createIntern (){
     inquirer.prompt(internInfoArr).then(function(internDataResponse){
-      console.log(internDataResponse.university, interns ++);
-      let newIntern= new Intern(internInfoArr.name, internDataResponse.id, internDataResponse.email,
+      console.log(employee, internDataResponse.university, interns ++);
+      let newIntern= new Intern(internDataResponse.name, internDataResponse.id, internDataResponse.email,
          internDataResponse.university)
       let university = internDataResponse.university
       let addTeamMember = internDataResponse.teamMembers.join('')
@@ -95,6 +100,9 @@ function createEngineer (){
         case 'Intern':     
         createIntern();
       break;
+
+      case 'Finish Team':
+        // htmlRender();
       }
 
     });
@@ -103,7 +111,7 @@ function createEngineer (){
 
 function onboard() {
    inquirer.prompt(employeeInfoArr).then(function(employeeDataResponse) {   
-     console.log(employeeDataResponse.role);   
+     console.log(employees, employeeDataResponse.role);   
        let newEmployeeRole = employeeDataResponse.role.join('')
       console.log(newEmployeeRole, employees ++)
       let newEmployee= new Employee(employeeInfoArr.name, employeeInfoArr.id, employeeInfoArr.email)

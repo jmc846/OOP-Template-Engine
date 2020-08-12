@@ -29,11 +29,12 @@ const engineerInfoArr = [
     },
     {
         type: 'checkbox',
-        name: 'team members',
+        name: 'teamMembers',
         message: "Do you want to create additional Team members? if so, what Role",
         choices: ['Engineer',
             'Manager',
-            'Intern']
+            'Intern',
+            'Finish Team']
 
     },
 

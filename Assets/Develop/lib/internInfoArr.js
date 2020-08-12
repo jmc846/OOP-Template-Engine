@@ -33,7 +33,8 @@ const internInfoArr = [
         message: "Do you want to create additional Team members? if so, what Role",
         choices: ['Engineer',
             'Manager',
-            'Intern']
+            'Intern',
+            'Finish Team']
 
     }
  
