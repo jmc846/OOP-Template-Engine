@@ -49,7 +49,7 @@ function onboard() {
      console.log(employeeDataResponse.role);   
        let newEmployeeRole = employeeDataResponse.role;
 
-   switch (employee){
+   switch (newEmployeeRole){
      case 'Manager':
     if (employeeDataResponse.role === 'Manager')
     createManager();
