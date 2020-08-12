@@ -21,7 +21,7 @@ const Employee = require("./lib/Employee");
  const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
  const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
  const employeeArr = [jacob, kim, randy];
-  //htmlRender();
+  htmlRender();
 // console.log(htmlRender(employeeArr))
 //  console.log(jacob);
 //  console.log(kim);
@@ -31,9 +31,10 @@ const Employee = require("./lib/Employee");
 function createManager (){
 inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
   console.log(managerDataResponse, managers ++);
-  let newManager= new Manager(managerInfoArr)
+  let newManager= new Manager(managerInfoArr.name, managerInfoArr.id,
+     managerInfoArr.email, managerInfoArr.officeNumber)
   let officeNumber = managerDataResponse.officeNumber
-  let addTeamMember = managerDataResponse.addTeamMember
+  let addTeamMember = managerDataResponse.TeamMember
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -53,9 +54,10 @@ inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
 function createEngineer (){
   inquirer.prompt(engineerInfoArr).then(function(engineerDataResponse){
     console.log(engineerDataResponse.github, engineers ++);
-    let newEngineer= new Engineer(engineerInfoArr)
+    let newEngineer= new Engineer(engineerInfoArr.name, engineerDataResponse.id,
+       engineerDataResponse.email, engineerDataResponse.github)
     let github = engineerDataResponse.github
-    let addTeamMember = engineerDataResponse.addTeamMember
+    let addTeamMember = engineerDataResponse.TeamMember
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -76,9 +78,10 @@ function createEngineer (){
   function createIntern (){
     inquirer.prompt(internInfoArr).then(function(internDataResponse){
       console.log(internDataResponse.university, interns ++);
-      let newIntern= new Intern(internInfoArr)
+      let newIntern= new Intern(internInfoArr.name, internDataResponse.id, internDataResponse.email,
+         internDataResponse.university)
       let university = internDataResponse.university
-      let addTeamMember = internDataResponse.addTeamMember
+      let addTeamMember = internDataResponse.TeamMember
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -102,8 +105,10 @@ function onboard() {
      console.log(employeeDataResponse.role);   
        let newEmployeeRole = employeeDataResponse.role.join('')
       console.log(newEmployeeRole, employees ++)
-      let newEmployee= new Employee(employeeInfoArr)
-   switch (newEmployeeRole){
+      let newEmployee= new Employee(employeeInfoArr.name, employeeInfoArr.id, employeeInfoArr.email)
+    
+
+    switch (newEmployeeRole){
      case 'Manager':    
     createManager();   
   break;
@@ -182,8 +187,8 @@ function onboard() {
 
    ;
    
-  //  getOfficeNumber();
-//  
+
+  
             // } 
             
 

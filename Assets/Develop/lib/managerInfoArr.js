@@ -1,4 +1,24 @@
 const managerInfoArr = [
+    {
+        type: 'input',
+        name: "name",
+        message: "Please provide a Manager name",
+
+    },
+    {
+        type: 'input',
+        name: "email",
+        message: "Please provide a Manager email",
+
+    },
+    {
+
+
+        type: 'input',
+        name: "id",
+        message: "Please provide a Manager ID",
+        default: '00000'
+    },
   
    {
        type: 'input',
@@ -16,6 +36,7 @@ const managerInfoArr = [
         'Intern']
 
 }
+
 
 ]
 

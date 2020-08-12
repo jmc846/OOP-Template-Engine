@@ -1,4 +1,24 @@
 const engineerInfoArr = [
+    {
+        type: 'input',
+        name: "name",
+        message: "Please provide an Engineer name",
+
+    },
+    {
+        type: 'input',
+        name: "email",
+        message: "Please provide an Engineer email",
+
+    },
+    {
+
+
+        type: 'input',
+        name: "id",
+        message: "Please provide an Engineer ID",
+        default: '00000'
+    },
 
     {
         type: 'input',
