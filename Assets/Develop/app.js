@@ -13,12 +13,15 @@ var interns = [];
 const htmlRender = require("./lib/htmlRenderer");
 const employeeInfoArr = require("./lib/employeeInfoArr");
 const managerInfoArr = require("./lib/managerInfoArr");
+const engineerInfoArr= require("./lib/engineerInfoArr");
+const internInfoArr= require("./lib/internInfoArr");
+const Employee = require("./lib/Employee");
 
  const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
  const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
  const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
  const employeeArr = [jacob, kim, randy];
-// // htmlRender(employeeArr);
+  htmlRender();
 // console.log(htmlRender(employeeArr))
 //  console.log(jacob);
 //  console.log(kim);
@@ -26,85 +29,86 @@ const managerInfoArr = require("./lib/managerInfoArr");
 
 // Write code to use inquirer to gather information about the development team members,
 function createManager (){
-inquirer.prompt(managerInfoArr).then((managerDataResponse));
-console.log(managerDataResponse);
-let newManager= new Manager(managerInfoArr)
-let officeNumber = managerDataResponse.officeNumber
+inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
+  console.log(managerDataResponse, managers ++);
+  let newManager= new Manager(managerInfoArr)
+  let officeNumber = managerDataResponse.officeNumber
+});
+
 }
 function createEngineer (){
-  inquirer.prompt(engineerInfoArr).then((engineerDataResponse));
-  console.log(engineerDataResponse.github);
-  let newEngineer= new Engineer(engineerInfoArr)
-  let github = engineerDataResponse.github
+  inquirer.prompt(engineerInfoArr).then(function(engineerDataResponse){
+    console.log(engineerDataResponse.github, engineers ++);
+    let newEngineer= new Engineer(engineerInfoArr)
+    let github = engineerDataResponse.github
+
+  });
+
   }
   function createIntern (){
-    inquirer.prompt(internInfoArr).then((internDataResponse));
-    console.log(internDataResponse.university);
-    let newintern= new Intern(internInfoArr)
-    let university = internDataResponse.university
+    inquirer.prompt(internInfoArr).then(function(internDataResponse){
+      console.log(internDataResponse.university, interns ++);
+      let newIntern= new Intern(internInfoArr)
+      let university = internDataResponse.university
+
+    });
+
     }
 
 function onboard() {
-   inquirer.prompt(employeeInfoArr).then((employeeDataResponse) => {   
+   inquirer.prompt(employeeInfoArr).then(function(employeeDataResponse) {   
      console.log(employeeDataResponse.role);   
-       let newEmployeeRole = employeeDataResponse.role;
-
+       let newEmployeeRole = employeeDataResponse.role.join('')
+      console.log(newEmployeeRole, employees ++)
+      let newEmployee= new Employee(employeeInfoArr)
    switch (newEmployeeRole){
-     case 'Manager':
-    if (employeeDataResponse.role === 'Manager')
-    createManager();
-   
-   break;
+     case 'Manager':    
+    createManager();   
+  break;
     
     case 'Engineer':
-      if(employeeDataResponse.role === 'Engineer')
-      createEngineer();  
-  
+   createEngineer();   
   break;
-  
-    case 'Intern':
-      if(employeeDataResponse.role === 'Intern')
-      createIntern();
+
+    case 'Intern':     
+    createIntern();
+  break;
    }
 
-}
-
-
-             
+}   
   
    );            
  
    ;     
 
-//          console.log("html generation has begun, wait one moment");
-//          employees.push(employeeD);
-//          console.log(employees)
-//          if(response.nextE){
-//           inputEmployeeInfo();
-//          }else{
-//           employees.forEach(employee =>{
-//              const role = employee.getRole();
-//            })
-//         }
-//          })
-//          const employeeCreated = employeeInfoArr.createEmployee(role);
+          console.log("html generation has begun, wait one moment");
+          employees.push(employeeD);
+          console.log(employees)
+          if(response.nextE){
+           inputEmployeeInfo();
+          }else{
+           employees.forEach(employee =>{
+              const role = employee.getRole();
+            })
+         }
+          };
+          const employeeCreated = employeeInfoArr.createEmployee(role);
  
-//          fs.appendFile("team.html",employeeCreated, err =>{
-//            if(err){
-//              console.log(err);
-//            } else{
-//              console.log("YAY!!!");
-//            }
+         fs.appendFile("team.html",employeeCreated, err =>{
+            if(err){
+              console.log(err);
+            } else{
+              console.log("YAY!!!");
+            }
 
-//           }
-//         }
-//         ;
-//  })
-//  }    .catch((err) => {
-//      console.log(err);
-//     };
-//  ;
-//     ;
+           }
+         )
+         
+     .catch((err) => {
+      console.log(err);
+     })
+  ;
+     ;
 // // and to create objects for each team member (using the correct classes as blueprints!)
 
 // // After the user has input all employees desired, call the `render` function (required
@@ -140,5 +144,5 @@ function onboard() {
 //  
             // } 
             
-}
+
 onboard();       
