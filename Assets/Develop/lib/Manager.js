@@ -17,6 +17,7 @@ class Manager extends Employee {
     }
     render(html){
         
+        
     }
 }
 module.exports = Manager

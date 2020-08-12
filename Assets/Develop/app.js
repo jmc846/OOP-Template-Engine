@@ -1,3 +1,4 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -15,14 +16,14 @@ const employeeInfoArr = require("./lib/employeeInfoArr");
 const managerInfoArr = require("./lib/managerInfoArr");
 const engineerInfoArr= require("./lib/engineerInfoArr");
 const internInfoArr= require("./lib/internInfoArr");
-const Employee = require("./lib/Employee");
+
 
  const jacob = new Manager('jacob', '25', 'jacob@gmail.com', '555-555-5555');
  const kim = new Intern('kim','23','kim@gmail.com','Rutgers');
  const randy = new Engineer('randy', '30', 'randy@gmail','randy2randy@github.com');
  const employeeArr = [jacob, kim, randy];
-  htmlRender();
-// console.log(htmlRender(employeeArr))
+ 
+ 
 //  console.log(jacob);
 //  console.log(kim);
 //  console.log(randy);
@@ -34,7 +35,7 @@ inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
   let newManager= new Manager(managerInfoArr.name, managerInfoArr.id,
      managerInfoArr.email, managerInfoArr.officeNumber)
   let officeNumber = managerDataResponse.officeNumber
-  let addTeamMember = managerDataResponse.TeamMember
+  let addTeamMember = managerDataResponse.teamMembers.join('')
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -57,7 +58,7 @@ function createEngineer (){
     let newEngineer= new Engineer(engineerInfoArr.name, engineerDataResponse.id,
        engineerDataResponse.email, engineerDataResponse.github)
     let github = engineerDataResponse.github
-    let addTeamMember = engineerDataResponse.TeamMember
+    let addTeamMember = engineerDataResponse.teamMembers.join('')
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -81,7 +82,7 @@ function createEngineer (){
       let newIntern= new Intern(internInfoArr.name, internDataResponse.id, internDataResponse.email,
          internDataResponse.university)
       let university = internDataResponse.university
-      let addTeamMember = internDataResponse.TeamMember
+      let addTeamMember = internDataResponse.teamMembers.join('')
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
