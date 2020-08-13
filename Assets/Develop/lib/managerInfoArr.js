@@ -34,7 +34,7 @@ const managerInfoArr = [
     choices: ['Engineer',
         'Manager',
         'Intern',
-    'Finish Team']
+    'finish team']
 
 }
 

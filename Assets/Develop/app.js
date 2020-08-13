@@ -30,11 +30,24 @@ const internInfoArr= require("./lib/internInfoArr");
 //  console.log(randy);
 
 // Write code to use inquirer to gather information about the development team members,
+function generateTeamHtml(){
+  let finishTeam = managerInfoArr.teamMembers.join('')
+  .then(() => {
+    let html = render(teamMembers);
+    fs.writeFile("./output/team.html", html, 'utf8', () => {
+      console.log("Finished")
+    });
+}
+  )
+
+}
+
 function createManager (){
 inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
   console.log(employees,managerDataResponse, managers ++);
   let employee= new Manager(managerDataResponse.name, managerDataResponse.id,
      managerDataResponse.email, managerDataResponse.officeNumber)
+     teamMembers.push(managers)
   let officeNumber = managerDataResponse.officeNumber
   let addTeamMember = managerDataResponse.teamMembers.join('')
       switch (addTeamMember){
@@ -50,7 +63,7 @@ inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
         createIntern();
       break;
       case 'Finish Team':
-        htmlRender();
+        htmlRender(teamMembers);
       }
 });
 
@@ -60,6 +73,7 @@ function createEngineer (){
     console.log(employees,engineerDataResponse.github, engineers ++);
     let employee= new Engineer(engineerDataResponse.name, engineerDataResponse.id,
        engineerDataResponse.email, engineerDataResponse.github)
+       teamMembers.push(engineer)
     let github = engineerDataResponse.github
     let addTeamMember = engineerDataResponse.teamMembers.join('')
       switch (addTeamMember){
@@ -76,7 +90,7 @@ function createEngineer (){
       break;
        
       case 'Finish Team':
-         htmlRender();
+         htmlRender(teamMembers);
       }
 
   });
@@ -87,6 +101,7 @@ function createEngineer (){
       console.log(employees, internDataResponse.university, interns ++);
       let employee= new Intern(internDataResponse.name, internDataResponse.id, internDataResponse.email,
          internDataResponse.university)
+         teamMembers.push(interns)
       let university = internDataResponse.university
       let addTeamMember = internDataResponse.teamMembers.join('')
       switch (addTeamMember){
@@ -103,7 +118,7 @@ function createEngineer (){
       break;
 
       case 'Finish Team':
-        htmlRender();
+        generateHtml();
       }
 
     });
@@ -115,6 +130,7 @@ function onboard() {
      console.log(employees, employeeDataResponse.role);   
        let newEmployeeRole = employeeDataResponse.role.join('')
       console.log(newEmployeeRole, employees ++)
+      teamMembers.push(employees)
       let employee= new Employee(employeeInfoArr.name, employeeInfoArr.id, employeeInfoArr.email)
     
 
@@ -139,31 +155,14 @@ function onboard() {
    ;     
 
           console.log("html generation has begun, wait one moment");
-        //   employees.push(employeeD);
-        //   console.log(employees)
-        //   if(response.nextE){
-        //    inputEmployeeInfo();
-        //   }else{
-        //    employees.forEach(employee =>{
-        //       const role = employees.getRole();
-        //     })
-        //  }
-          };
-//           const employeeCreated = employeeInfoArr.Render()
+      
  
-//          fs.writeFile("team.html",employeeCreated, err =>{
-//             if(err){
-//               console.log(err);
-//             } else{
-//               console.log("YAY!!!");
-//             }
 
-//            }
-//          )
-         
-//      .catch((err) => {
-//       console.log(err);
-//      })
+    };
+
+    onboard() 
+
+
 //   ;
 //      ;
 // // // and to create objects for each team member (using the correct classes as blueprints!)
@@ -201,5 +200,8 @@ function onboard() {
   
             // } 
             
-
-onboard();       
+          
+    
+          ;
+         
+          
