@@ -31,7 +31,7 @@ const internInfoArr= require("./lib/internInfoArr");
 
 // Write code to use inquirer to gather information about the development team members,
 function generateTeamHtml(){
-  let finishTeam = TeamMembersDataresponse.finishTeam.join('')
+  let finishTeam = teamMembersDataresponse.finishTeam.join('')
   .then(() => {
     let html = render(teamMembers);
     fs.writeFile("./output/team.html", html, 'utf8', () => {
@@ -48,8 +48,7 @@ inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
   let employee= new Manager(managerDataResponse.name, managerDataResponse.id,
      managerDataResponse.email, managerDataResponse.officeNumber)
      teamMembers.push(managers)
-  let officeNumber = managerDataResponse.officeNumber
-  let addTeamMember = managerDataResponse.teamMembers
+  let addTeamMember = managerDataResponse.teamMembers.join('')
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -74,8 +73,7 @@ function createEngineer (){
     let employee= new Engineer(engineerDataResponse.name, engineerDataResponse.id,
        engineerDataResponse.email, engineerDataResponse.github)
        teamMembers.push(engineers)
-    let github = engineerDataResponse.github
-    let addTeamMember = engineerDataResponse.teamMembers
+        let addTeamMember = engineerDataResponse.teamMembers.join('')
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
@@ -102,8 +100,7 @@ function createEngineer (){
       let employee= new Intern(internDataResponse.name, internDataResponse.id, internDataResponse.email,
          internDataResponse.university)
          teamMembers.push(interns)
-      let university = internDataResponse.university
-      let addTeamMember = internDataResponse.teamMembers
+        let addTeamMember = internDataResponse.teamMembers.join('')
       switch (addTeamMember){
         case 'Manager':    
         createManager();   
