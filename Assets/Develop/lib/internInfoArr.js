@@ -32,7 +32,7 @@ const internInfoArr = [
         choices: ['Engineer',
             'Manager',
             'Intern',
-            'Finish Team']
+            'finish team']
 
     }
  
