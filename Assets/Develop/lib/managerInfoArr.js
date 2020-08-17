@@ -19,24 +19,25 @@ const managerInfoArr = [
         message: "Please provide a Manager ID",
         default: '00000'
     },
-  
-   {
-       type: 'input',
-       name: 'officenumber',
-       message: "Please provide the Manager Office Number",
-       officeNumber: 'officeNumber',
 
-   },
-   {
-    type: 'checkbox',
-    name: 'teamMembers',
-    message: "Do you want to create additional Team members? if so, what Role",
-    choices: ['Engineer',
-        'Manager',
-        'Intern',
-    'finish team']
+    {
+        type: 'input',
+        name: 'officenumber',
+        message: "Please provide the Manager Office Number",
+        officeNumber: 'officeNumber',
 
-}
+    },
+    {
+
+        type: 'checkbox',
+        name: 'team members',
+        message: "Do you want to create additional Team members? if so, what Role",
+        choices: ['Engineer',
+            'Manager',
+            'Intern',
+            'finish team']
+
+    }
 
 
 ]
