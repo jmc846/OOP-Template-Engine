@@ -1,7 +1,7 @@
 const { isNumber, isString } = require("util");
 // module consists of questions and validation of answers of users after their input, 
 // also 'when' allows us to ask different employees different questions
-const questionsArr = [
+const employeeInfoArr = [
     {
         type: "list",
         message: "Please choose your position in the team.",
@@ -98,4 +98,4 @@ const questionsArr = [
     },
 
 ];
-module.exports = questionsArr;
+module.exports = employeeInfoArr;
