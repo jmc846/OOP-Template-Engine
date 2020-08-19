@@ -19,23 +19,25 @@ const Intern = require("./lib/Intern");
  const employeeArr = [jacob, kim, randy];
 
  
-render(teamMembers)
+
 // Function to input each employee's informatioin
 function inputEmployeeInfo() {
-  let employeeData = {};
+  let employeeData = [];
   console.log(employeeInfoArr)
   inquirer.prompt(employeeInfoArr).then(response => {
       if (response.employeePosition === "Manager") {
-          employeeData = new Manager(response.employeeName, response.employeeID, response.email, response.officeNumber);
+          manager = new Manager(response.employeeName, response.employeeID, response.email, response.officeNumber);
           isManager = true
+          employeeData.push(manager)
       } else if (response.employeePosition === "Engineer") {
-          employeeData = new Engineer(response.employeeName, response.employeeID, response.email, response.gitHubAddress);
+          engineer = new Engineer(response.employeeName, response.employeeID, response.email, response.gitHubAddress);
           isEngineer = true;
+          employeeData.push(engineer)
       } else {
-          employeeData = new Intern(response.employeeName, response.employeeID, response.email, response.university);
+          intern = new Intern(response.employeeName, response.employeeID, response.email, response.university);
+          employeeData.push(intern)
       }
-      teamMembers.push(employeeData);
-      if (response.nextE) {
+            if (response.nextE) {
           inputEmployeeInfo();
       } else {
           //     // the criteria states each team has a manager an engineer
@@ -47,7 +49,8 @@ function inputEmployeeInfo() {
           //     inputEmployeeInfo();
           // } else {
             // FS write renders all input by user to the HTML
-              fs.writeFile(outputPath, render(teamMembers, teamName), (er) => {
+              fs.writeFile(outputPath, render(employeeData, teamName), (er) => {
+                console.log(employeeData)
                   if (er) return console.log(er);
                   console.log(`team.html completed...Look for ${outputPath}`);
               });

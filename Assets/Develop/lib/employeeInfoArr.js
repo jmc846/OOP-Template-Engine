@@ -25,7 +25,7 @@ const employeeInfoArr = [
     },
     {
         type: "input",
-        message: "Please enter your emploee ID.",
+        message: "Please enter your employee ID.",
         name: "employeeID",
         validate: employeeID => {
             let alphaExp = /^([0-9])+$/;
