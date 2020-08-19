@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "main.html");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const employeeInfoArr = require('./lib/employeeInfoArr');
 // Global Varibles
@@ -38,14 +38,14 @@ function inputEmployeeInfo() {
       if (response.nextE) {
           inputEmployeeInfo();
       } else {
-              // the criteria states each team has a manager an engineer
-          if (isManager === false) {
-              console.log("There is no manager on team");
-              inputEmployeeInfo();
-          } else if (isEngineer === false) {
-              console.log("There is no engineers on team");
-              inputEmployeeInfo();
-          } else {
+          //     // the criteria states each team has a manager an engineer
+          // if (isManager === false) {
+          //     console.log("There is no manager on team");
+          //     inputEmployeeInfo();
+          // } else if (isEngineer === false) {
+          //     console.log("There is no engineers on team");
+          //     inputEmployeeInfo();
+          // } else {
             // FS write renders all input by user to the HTML
               fs.writeFile(outputPath, render(teamMembers, teamName), (er) => {
                   if (er) return console.log(er);
@@ -55,9 +55,10 @@ function inputEmployeeInfo() {
           }
       }
 
-
-  });
-};
+)
+  };
+// }
+  ;
 // getting the name of the team and validate it
 function getTeamName() {
   inquirer.prompt([
