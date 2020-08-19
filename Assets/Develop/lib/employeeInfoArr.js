@@ -19,6 +19,13 @@ const employeeInfoArr = [
         ],
     },
 
+// Example question obj of obj
+// const employee prompt = {
+// type: 'input',
+// name: 'example',
+// message: 'what is an exmple',
+// forcePoints: 300
+// };
 
 ]
 
