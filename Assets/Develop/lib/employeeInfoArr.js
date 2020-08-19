@@ -79,10 +79,10 @@ const employeeInfoArr = [
     },
     {
         type: "input",
-        message: "Please input your school.",
-        name: "school",
-        validate: school => {
-            if (school.length < 1) {
+        message: "Please input your university.",
+        name: "university",
+        validate: university => {
+            if (university.length < 1) {
                 return "Name is too short";
             }
             else {
