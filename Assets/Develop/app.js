@@ -3,11 +3,8 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-const employeeInfoArr = require("./lib/employeeInfoArr");
-const managerInfoArr = require("./lib/managerInfoArr");
-const engineerInfoArr= require("./lib/engineerInfoArr");
-const internInfoArr= require("./lib/internInfoArr");
 const render = require("./lib/htmlRenderer");
+const employeeInfoArr = ('./lib/employeeInfoArr');
 
 var teamMembers = [];
 const Employee = require("./lib/Employee");
@@ -40,106 +37,62 @@ const Intern = require("./lib/Intern");
 // }
 render(teamMembers)
 
+function inputEmployeeInfo() {
+  let employeeData = {};
+  inquirer.prompt(employeeInfoArr).then(response => {
+      if (response.employeePosition === "Manager") {
+          employeeData = new Manager(response.employeeName, response.employeeID, response.email, response.officeNumber);
+          isManager = true
+      } else if (response.employeePosition === "Engineer") {
+          employeeData = new Engineer(response.employeeName, response.employeeID, response.email, response.gitHubAddress);
+          isEngineer = true;
+      } else {
+          employeeData = new Intern(response.employeeName, response.employeeID, response.email, response.school);
+      }
+      employees.push(employeeData);
+      if (response.nextE) {
+          inputEmployeeInfo();
+      } else {
 
-function createManager (){
-inquirer.prompt(managerInfoArr).then(function(managerDataResponse){
-  console.log(teamMembers,managerDataResponse);
-  let employee= new Manager(teamMembers ++ )
-  // teamMembers.push(employee)
-  let addTeamMember = managerDataResponse.teamMembers.join('')
-      switch (addTeamMember){
-        case 'Manager':    
-        createManager();   
-      break;
-        
-        case 'Engineer':
-       createEngineer();   
-      break;    
-        case 'Intern':     
-        createIntern();
-      break;
-      case 'finish team':
-        render()
-    }
-   }
-)
-  }
- 
-function createEngineer (){
-  inquirer.prompt(engineerInfoArr).then(function(engineerDataResponse){
-    console.log(teamMembers,engineerDataResponse);
-    let employee= new Engineer (teamMembers ++ )
-    // teamMembers.push(employee)
-    let addTeamMember = engineerDataResponse.teamMembers.join('')
-      switch (addTeamMember){
-        case 'Manager':    
-        createManager();   
-      break;
-        
-        case 'Engineer':
-       createEngineer();   
-      break;
-    
-        case 'Intern':     
-        createIntern();
-      break;
-       
-      case 'finish team':
-        render();
+          if (isManager === false) {
+              console.log("There is no manager on team");
+              inputEmployeeInfo();
+          } else if (isEngineer === false) {
+              console.log("There is no engineers on team");
+              inputEmployeeInfo();
+          } else {
+              fs.writeFile(outputPath, render(employees, teamName), (er) => {
+                  if (er) return console.log(er);
+                  console.log(`team.html completed...Look for ${outputPath}`);
+              });
+              return
+          }
       }
 
+
   });
-  }
-
-  function createIntern (){
-    inquirer.prompt(internInfoArr).then(function(internDataResponse){
-      console.log(teamMembers, internDataResponse);
-      let employee = new Intern (teamMembers ++ )
-      // teamMembers.push(employee)
-        let addTeamMember = internDataResponse.teamMembers.join('')
-      switch (addTeamMember){
-        case 'Manager':    
-        createManager();   
-      break;
-        
-        case 'Engineer':
-       createEngineer();   
-      break;
-    
-        case 'Intern':     
-        createIntern();
-      break;
-
-      case 'finish team':
-        render();
-
-      };
-    })
-  }
+};
+// getting the name of the team and validate it
+function getTeamName() {
+  inquirer.prompt([
+      {
+          type: "input",
+          message: "Please input your team name.",
+          name: "teamName",
+          validate: teamName => {
+              if (teamName.length < 1) {
+                  return "Team name is too short";
+              }
+              else {
+                  return true;
+              }
+          },
+      },
+  ]).then(response => {
+      teamName = response.teamName;
+      inputEmployeeInfo();
+  });
+}
+getTeamName();
 
 
-function onboard() {
-   inquirer.prompt(employeeInfoArr).then(function(employeeDataResponse) {   
-       let newEmployeeRole = employeeDataResponse.role.join('')
-      console.log(newEmployeeRole, teamMembers)
-      let employee= new Employee (teamMembers ++)
-    switch (newEmployeeRole){
-     case 'Manager':    
-    createManager();   
-  break;
-    
-    case 'Engineer':
-   createEngineer();   
-  break;
-
-    case 'Intern':     
-    createIntern();
-  break;
-   };    
-  }            
-  ) ;         
-          
-}; 
-
-
-onboard()
