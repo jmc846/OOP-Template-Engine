@@ -40,15 +40,7 @@ function inputEmployeeInfo() {
             if (response.nextE) {
           inputEmployeeInfo();
       } else {
-          //     // the criteria states each team has a manager an engineer
-          // if (isManager === false) {
-          //     console.log("There is no manager on team");
-          //     inputEmployeeInfo();
-          // } else if (isEngineer === false) {
-          //     console.log("There is no engineers on team");
-          //     inputEmployeeInfo();
-          // } else {
-            // FS write renders all input by user to the HTML
+                 // FS write renders all input by user to the HTML
               fs.writeFile(outputPath, render(employeeData, teamName), (er) => {
                 console.log(employeeData)
                   if (er) return console.log(er);
@@ -56,9 +48,7 @@ function inputEmployeeInfo() {
               });
               return
           }
-      }
-
-)
+      })
   };
 // }
   ;
@@ -84,5 +74,3 @@ function getTeamName() {
   });
 }
 getTeamName();
-
-
